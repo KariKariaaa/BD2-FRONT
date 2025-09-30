@@ -6,11 +6,14 @@ import Login from './Login'
 import InicioEstudiantes from './InicioEstudiantes';
 import InicioUsuarios from './InicioUsuarios';
 import InicioReportes from './Reportes';
+import InicioRecuperar from './RecuperarContra';
 
 function App() {
   return (
     <Routes>    
       <Route path="/" element={<Login />} />
+
+      <Route path="/contra" element={<InicioRecuperar />} />
 
       <Route path="/inicio/*" element={<InicioLayout />}>
         <Route path="estudiantes" element={<InicioEstudiantes />} />

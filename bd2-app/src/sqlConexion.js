@@ -231,6 +231,23 @@ export async function actualizarContraseña(forms) {
   }
 }
 
+export async function solicitarRecuperacion(correo) {
+  console.log("SQLCONEXION.js" + correo)
+  try {
+    const response = await fetch("http://localhost:4000/solicitarRecuperacion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ correo }),
+    });
+
+    return await response.json();
+  } catch (err) {
+    console.error("Error en solicitarRecuperacion:", err);
+    return { success: false, message: "Error en cliente solicitarRecuperacion" };
+  }
+}
+
+
 export async function estudiantes() {
   try {
     const response = await fetch("http://localhost:4000/estudiantes", {

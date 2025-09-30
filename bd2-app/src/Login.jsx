@@ -2,6 +2,7 @@ import { useState } from "react";
 import { login, insertarEntradaSalida } from "./sqlConexion";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import ModalFormulario from './ModalCorreo';
 
 function Login() {
     const [usuario, setUsuario] = useState("");
@@ -9,6 +10,7 @@ function Login() {
     const [error, setError] = useState(false);
     const [captchaValido, setCaptchaValido] = useState(false);
     const navigate = useNavigate();
+    const [mostrarModal, setMostrarModal] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,7 +78,23 @@ function Login() {
                 {error && (
                     <span className="text-red-600 underline text-sm">{error}</span>
                 )}
+
+                <button
+                    onClick={() => setMostrarModal(true)}
+                    className="w-70 py-3 text-white bg-gray-700 font-medium rounded-full"
+                >
+                    Olvidé mi contraseña
+                </button>
             </form>
+
+            {/* Modal */}
+                        <ModalFormulario 
+                            visible={mostrarModal} 
+                            onClose={() => setMostrarModal(false)} 
+                            onGuardado={async () => {
+                            setMostrarModal(false);
+                            }}
+                        />
         </div>
     );
 }
