@@ -52,6 +52,10 @@ function Sidebar() {
               <Link to="/inicio/estudiantes" className="block hover:font-bold">INICIO</Link>
               <Link to="/inicio/usuarios" className="block hover:font-bold">USUARIOS</Link>
               <Link to="/inicio/reportes" className="block hover:font-bold">REPORTES</Link>
+              <Link to="/inicio/productosCategorias" className="block hover:font-bold">PRODUCTOS/CATEGORÍAS</Link>
+              <Link to="/inicio/inventario" className="block hover:font-bold">INVENTARIO</Link>
+              <Link to="/inicio/ventas" className="block hover:font-bold">VENTAS</Link>
+              <Link to="/inicio/reporteventas" className="block hover:font-bold">REPORTES</Link>
             </>
           )}
 

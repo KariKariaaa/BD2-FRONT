@@ -72,6 +72,7 @@ export default function ModalFormulario({ visible, onClose, onGuardado }) {
         return;
       }
 
+      console.log("Estudiante: " + estudianteSeleccionado);
       const result = await obtenerEstudiante(estudianteSeleccionado);
 
       if (!result.success) {

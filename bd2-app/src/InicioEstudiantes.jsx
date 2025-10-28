@@ -14,10 +14,13 @@ function Inicio() {
     const [estudiantesList, setEstudiantesList] = useState([]);
     const [error, setError] = useState("");
 
+    const [idRol, setIdRol] = useState(null);
+
     useEffect(() => {
         const idUsuario = localStorage.getItem("idUsuario");
         const nombreUsuario = localStorage.getItem("NombreUsuario");
         const rol = localStorage.getItem('Rol');
+        setIdRol(parseInt(rol)); // Asegura que sea número
 
         // Si no está logueado → redirigir
         if (!idUsuario || !nombreUsuario || !rol) {
@@ -92,9 +95,22 @@ function Inicio() {
                                 <td className="p-3 text-center">{p.Telefono}</td>
                                 <td className="p-3 text-center">{p.FechaRegistro}</td>
                                 <td className="p-3 text-center">
+                                {/* Solo mostrar si idRol es 1*/}
+                                { idRol === 1  && (
+                                    <>
                                     <button onClick={() => eliminarEstudiantes(p.idEstudiante)} className="text-red-700 hover:text-[#58585a]">
-                                    <FaTrash size={30} />
+                                        <FaTrash size={30} />
                                     </button>
+                                    </>
+                                )}  
+                                {/* Solo mostrar si idRol es 1*/}
+                                { idRol === 2  && (
+                                    <>
+                                    <button onClick={() => addToast("No tienes permiso para realizar esta acción")} className="text-red-700 hover:text-[#58585a]">
+                                        <FaTrash size={30} />
+                                    </button>
+                                    </>
+                                )}  
                                 </td>
                             </tr>
                         ))}
