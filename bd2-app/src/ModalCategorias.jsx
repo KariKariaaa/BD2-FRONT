@@ -75,6 +75,10 @@ export default function ModalFormulario({ visible, onClose, onGuardado }) {
   }, [categoriaSeleccionado]);
 
   const handleGuardar = async (crear = true) => {
+    if((formData.categoria).length === 0){
+        setErrores({ general: "La categoría no puede estar vacía"});
+        return
+      }
     if(crear){
       const result = await insertarCategoria(formData);
 

@@ -43,6 +43,8 @@ function Sidebar() {
           { idRol === 2 && (
             <>
               <Link to="/inicio/estudiantes" className="block hover:font-bold">INICIO</Link>
+              <Link to="/inicio/inventario" className="block hover:font-bold">INVENTARIO</Link>
+              <Link to="/inicio/reporteventas" className="block hover:font-bold">REPORTES</Link>
             </>
           )}
 
