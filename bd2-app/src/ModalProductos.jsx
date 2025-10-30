@@ -286,8 +286,15 @@ export default function ModalFormulario({ visible, onClose, onGuardado }) {
               inputMode="numeric"
               value={formData.descuento}
               onChange={(e) => {
-                const soloNumeros = e.target.value.replace(/\D/g, ""); // elimina todo lo que no sea dígito
-                setFormData({ ...formData, descuento: soloNumeros });
+                let valor = e.target.value;
+
+                // 🔹 Permitir solo números y un punto
+                valor = valor.replace(/[^0-9.]/g, "");
+
+                // 🔹 Evitar más de un punto decimal
+                const partes = valor.split(".");
+                if (partes.length > 2) valor = partes[0] + "." + partes[1];
+                setFormData({ ...formData, descuento: valor });
               }}
               className="w-full bg-white text-black rounded-2xl px-3 py-2"
             />
