@@ -102,17 +102,20 @@ function Inicio() {
     };
 
 
-    const eliminarProductos = async (idProducto) => {
-        console.log(idProducto)
-        const result = await eliminarProducto(idProducto);
+    const eliminarProductos = async (idProducto, estado) => {
+        if(estado == "Disponible"){
+            addToast("El producto sigue disponible, así que no puede ser eliminado", "success");
+        }else{
+            const result = await eliminarProducto(idProducto);
 
-        if (!result.success) {
-            addToast(result.message || "Error desconocido", "error");
-            setError(result.message || "Error desconocido");
-        } else {
-            addToast(result.message, "success");
-            setError("");
-            traerProductos();
+            if (!result.success) {
+                addToast(result.message || "Error desconocido", "error");
+                setError(result.message || "Error desconocido");
+            } else {
+                addToast(result.message, "success");
+                setError("");
+                traerProductos();
+            }
         }
     };
 
@@ -225,7 +228,7 @@ function Inicio() {
                                 {/* Solo mostrar si idRol es 1*/}
                                 { idRol === 1  && (
                                     <>
-                                    <button onClick={() => eliminarProductos(p.IdProducto)} className="text-red-700 hover:text-[#58585a]">
+                                    <button onClick={() => eliminarProductos(p.IdProducto, p.Estado)} className="text-red-700 hover:text-[#58585a]">
                                         <FaTrash size={30} />
                                     </button>
                                     </>

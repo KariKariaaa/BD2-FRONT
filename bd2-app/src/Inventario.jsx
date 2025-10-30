@@ -153,24 +153,6 @@ function Inicio() {
                                     ? categoriasPorProducto[p.SKU].join(", ")
                                     : "Cargando..."}
                                 </td>
-                                <td className="p-3 text-center">
-                                {/* Solo mostrar si idRol es 1*/}
-                                { idRol === 1  && (
-                                    <>
-                                    <button onClick={() => eliminarProductos(p.IdProducto)} className="text-red-700 hover:text-[#58585a]">
-                                        <FaTrash size={30} />
-                                    </button>
-                                    </>
-                                )}  
-                                {/* Solo mostrar si idRol es 1*/}
-                                { idRol === 2  && (
-                                    <>
-                                    <button onClick={() => addToast("No tienes permiso para realizar esta acción")} className="text-red-700 hover:text-[#58585a]">
-                                        <FaTrash size={30} />
-                                    </button>
-                                    </>
-                                )}  
-                                </td>
                             </tr>
                         ))}
                     </tbody>
